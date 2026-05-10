@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>SKY WORLDWIDE - Global Services</title>
+    <title>SKY HOTEL MANAGEMENT AND HOSPITALITY WORLDWIDE</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -62,28 +62,45 @@
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
         
-        /* Custom scrollbar for 1:1 box text area */
+        /* Custom scrollbar for Vertical text area */
         .custom-scroll::-webkit-scrollbar {
-            width: 8px;
+            width: 6px;
         }
         .custom-scroll::-webkit-scrollbar-track {
-            background: #f1f1f1; 
-            border-radius: 8px;
+            background: transparent; 
         }
         .custom-scroll::-webkit-scrollbar-thumb {
             background: #d0c6ab; 
-            border-radius: 8px;
+            border-radius: 10px;
         }
         .custom-scroll::-webkit-scrollbar-thumb:hover {
             background: #7e775f; 
         }
 
+        /* Custom scrollbar for Horizontal Swiping */
+        .custom-scroll-x::-webkit-scrollbar {
+            height: 8px;
+        }
+        .custom-scroll-x::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+            border-radius: 10px;
+        }
+        .custom-scroll-x::-webkit-scrollbar-thumb {
+            background: #705d00; 
+            border-radius: 10px;
+        }
+        .custom-scroll-x {
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: #705d00 #f1f1f1;
+        }
+
         /* Smooth fade-in animation */
         .fade-in {
-            animation: fadeIn 0.4s ease-in-out forwards;
+            animation: fadeIn 0.5s ease-in-out forwards;
         }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
     </style>
@@ -92,49 +109,51 @@
 
     <!-- Top Navigation Header -->
     <header class="bg-surface border-b border-outline-variant sticky top-0 z-40 shadow-sm">
-        <div class="flex justify-between items-center w-full px-margin-desktop max-w-container-max mx-auto h-20">
-            <div class="flex items-center gap-4">
-                <a class="font-headline-md text-2xl font-bold tracking-tight text-primary uppercase" href="#">SKY WORLDWIDE</a>
+        <div class="flex justify-between items-center w-full px-4 md:px-margin-desktop max-w-container-max mx-auto h-20">
+            <div class="flex flex-col justify-center">
+                <a class="font-headline-md text-lg md:text-xl font-bold tracking-tight text-primary uppercase line-clamp-1" href="#">SKY HOTEL MANAGEMENT</a>
+                <span class="text-xs text-on-surface-variant font-semibold">AND HOSPITALITY WORLDWIDE</span>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="relative h-[350px] flex items-center justify-center overflow-hidden shrink-0">
+    <section class="relative h-[300px] md:h-[400px] flex items-center justify-center overflow-hidden shrink-0">
         <img alt="Hero Background" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADXRgn4R0Ruh-HG0E3LwOToY3lIvpa5cmcCFJKrtLdBej2DPqOCszjkKVr0MBE4qoGXwpYJu9BEW78CytbJd5cElMhjP3TNNkBhVE_7p0aBmnVjGGUm-p66OUfNlinvB9DUtMWVqOvaaTVFclF_NlRan4RMwEqtTxj3LuJu_xpiiKwEBT4pvos5TARkDrIylTb7ltC3KAQF9cRyTveJxNAaVSlsoaxNdva8cqX8-iQvDm8R6dGSCyFuBwB8Yo1VE8C4Xu2_mw1S-U"/>
         <div class="absolute inset-0 bg-background/85 backdrop-blur-sm"></div>
-        <div class="relative z-10 w-full max-w-container-max px-margin-desktop text-center">
-            <span class="inline-block px-4 py-1 mb-4 border border-outline-variant rounded-full text-sm font-semibold tracking-widest uppercase text-primary bg-surface/50">Global Premium Services</span>
-            <h1 class="text-4xl md:text-5xl lg:text-display-lg font-bold text-on-background">Explore Our Exclusives</h1>
+        <div class="relative z-10 w-full max-w-container-max px-4 md:px-margin-desktop text-center">
+            <span class="inline-block px-4 py-1 mb-4 border border-outline-variant rounded-full text-xs md:text-sm font-semibold tracking-widest uppercase text-primary bg-surface/80 shadow-sm">Global Premium Services</span>
+            <h1 class="text-3xl md:text-5xl lg:text-display-lg font-bold text-on-background leading-tight">Explore Our Exclusives</h1>
+            <p class="mt-4 text-sm md:text-base text-on-surface-variant font-medium">Address: online mumbai Bombay international worldwide</p>
         </div>
     </section>
 
-    <!-- MAIN DYNAMIC CONTENT AREA -->
-    <main class="flex-grow w-full max-w-container-max mx-auto px-margin-desktop py-16">
+    <!-- MAIN DYNAMIC CONTENT AREA (Grouped by Heading with Horizontal Scroll) -->
+    <main class="flex-grow w-full max-w-container-max mx-auto pl-4 md:pl-margin-desktop py-12 md:py-16 overflow-hidden">
         
         <!-- Loading Spinner -->
-        <div id="loading-spinner" class="text-center py-20 text-primary">
+        <div id="loading-spinner" class="text-center py-20 text-primary pr-4 md:pr-margin-desktop">
             <span class="material-symbols-outlined animate-spin text-5xl">autorenew</span>
             <p class="mt-4 font-semibold text-lg text-on-surface-variant">Fetching Latest Data...</p>
         </div>
 
-        <!-- Dynamic Content will be injected inside this Grid -->
+        <!-- Dynamic Content will be injected inside this Container -->
         <div id="dynamic-content-container" class="space-y-16">
-            <!-- JavaScript will load 1:1 cards here -->
+            <!-- JavaScript will load Headings and 9:16 Swipable Cards here -->
         </div>
 
     </main>
 
     <!-- ADMIN PANEL SECTION (Hidden by Default) -->
-    <section id="admin-section" class="max-w-container-max mx-auto px-margin-desktop py-10 hidden bg-surface-container-high border-t border-outline-variant w-full shrink-0">
-        <div class="bg-surface p-8 md:p-10 rounded-2xl shadow-xl border border-outline-variant">
+    <section id="admin-section" class="max-w-container-max mx-auto px-4 md:px-margin-desktop py-10 hidden bg-surface-container-high border-t border-outline-variant w-full shrink-0">
+        <div class="bg-surface p-6 md:p-10 rounded-2xl shadow-xl border border-outline-variant">
             <div class="flex justify-between items-center mb-8">
-                <h2 class="text-3xl font-headline-lg text-primary flex items-center gap-3">
-                    <span class="material-symbols-outlined text-4xl">dashboard_customize</span>
+                <h2 class="text-2xl md:text-3xl font-headline-lg text-primary flex items-center gap-3">
+                    <span class="material-symbols-outlined text-3xl md:text-4xl">dashboard_customize</span>
                     Admin Dashboard
                 </h2>
-                <button id="close-admin-btn" class="text-on-surface-variant hover:text-error transition-colors">
-                    <span class="material-symbols-outlined text-3xl">close</span>
+                <button id="close-admin-btn" class="text-on-surface-variant hover:text-error transition-colors p-2 bg-surface-container rounded-full">
+                    <span class="material-symbols-outlined text-2xl">close</span>
                 </button>
             </div>
             
@@ -144,26 +163,32 @@
                 <input type="hidden" id="existing-image-base64" value="">
 
                 <div>
-                    <label class="block text-base font-bold text-on-surface mb-2">Heading Title</label>
-                    <input type="text" id="admin-heading" required class="w-full bg-background border-2 border-outline-variant rounded-lg p-4 text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Enter the main heading...">
+                    <label class="block text-base font-bold text-on-surface mb-2">Category / Heading Title</label>
+                    <p class="text-xs text-on-surface-variant mb-2">Type a new heading OR choose from existing ones below to group this card.</p>
+                    <!-- Input with datalist for smart selection -->
+                    <input type="text" list="existing-headings" id="admin-heading" required class="w-full bg-background border-2 border-outline-variant rounded-lg p-4 text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all font-semibold text-lg" placeholder="e.g. Travel & Luxury...">
+                    <datalist id="existing-headings">
+                        <!-- Options injected via JS -->
+                    </datalist>
                 </div>
 
                 <div>
                     <label class="block text-base font-bold text-on-surface mb-2">Detailed Content</label>
-                    <textarea id="admin-content" required rows="6" class="w-full bg-background border-2 border-outline-variant rounded-lg p-4 text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Enter the content description..."></textarea>
+                    <textarea id="admin-content" required rows="6" class="w-full bg-background border-2 border-outline-variant rounded-lg p-4 text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all custom-scroll" placeholder="Enter the content description..."></textarea>
                 </div>
 
                 <div class="bg-surface-container p-6 rounded-lg border border-outline-variant border-dashed">
-                    <label class="block text-base font-bold text-on-surface mb-2">Upload Image (Will fit in 1:1 Square)</label>
+                    <label class="block text-base font-bold text-on-surface mb-2">Upload Image</label>
+                    <p class="text-xs text-on-surface-variant mb-4">This image will appear in the top half of the 9:16 card.</p>
                     <input type="file" id="admin-image" accept="image/*" class="w-full text-on-surface-variant file:mr-4 file:py-3 file:px-6 file:rounded-lg file:border-0 file:text-sm file:font-bold file:bg-primary file:text-on-primary hover:file:bg-surface-tint cursor-pointer transition-colors">
                     <p id="image-status" class="text-sm font-semibold text-primary mt-3"></p>
                 </div>
 
-                <div class="flex gap-4 pt-4 border-t border-outline-variant">
-                    <button type="submit" id="submit-btn" class="px-8 py-4 bg-primary text-on-primary rounded-lg font-bold text-lg hover:bg-surface-tint transition-all shadow-md flex items-center gap-2">
+                <div class="flex flex-col sm:flex-row gap-4 pt-4 border-t border-outline-variant">
+                    <button type="submit" id="submit-btn" class="px-8 py-4 bg-primary text-on-primary rounded-lg font-bold text-lg hover:bg-surface-tint transition-all shadow-md flex items-center justify-center gap-2 flex-1">
                         <span class="material-symbols-outlined">save</span> Save to Database
                     </button>
-                    <button type="button" id="cancel-edit-btn" class="hidden px-8 py-4 bg-error text-on-error rounded-lg font-bold text-lg hover:opacity-90 transition-all shadow-md">
+                    <button type="button" id="cancel-edit-btn" class="hidden px-8 py-4 bg-error text-on-error rounded-lg font-bold text-lg hover:opacity-90 transition-all shadow-md flex-1">
                         Cancel Edit
                     </button>
                 </div>
@@ -172,15 +197,16 @@
     </section>
 
     <!-- Footer Area (Admin Button is Here at the Bottom) -->
-    <footer class="bg-surface border-t border-outline-variant mt-auto shrink-0">
-        <div class="flex flex-col md:flex-row justify-between items-center py-8 px-margin-desktop max-w-container-max mx-auto gap-6">
-            <div class="text-center md:text-left">
-                <span class="block text-xl font-bold text-primary mb-1">SKY WORLDWIDE</span>
-                <p class="text-sm font-medium text-on-surface-variant">© 2024 Sky Hotel Management. All rights reserved.</p>
+    <footer class="bg-surface-container-highest border-t border-outline-variant mt-auto shrink-0">
+        <div class="flex flex-col md:flex-row justify-between items-center py-10 px-4 md:px-margin-desktop max-w-container-max mx-auto gap-8 text-center md:text-left">
+            <div>
+                <span class="block text-xl font-bold text-primary mb-2">SKY HOTEL MANAGEMENT AND HOSPITALITY WORLDWIDE</span>
+                <p class="text-sm font-semibold text-on-surface mb-1">Address : online mumbai Bombay international worldwide</p>
+                <p class="text-xs font-medium text-on-surface-variant mt-4">© 2024 Sky Hotel Management. All rights reserved.</p>
             </div>
             
             <!-- ADMIN LOGIN BUTTON (AT BOTTOM) -->
-            <button id="open-password-modal-btn" class="px-6 py-3 bg-surface-container-high text-on-surface font-semibold rounded-lg hover:bg-primary hover:text-on-primary transition-all flex items-center gap-2 border border-outline-variant">
+            <button id="open-password-modal-btn" class="px-8 py-3 bg-inverse-surface text-on-tertiary font-bold rounded-lg hover:bg-primary transition-all flex items-center gap-2 shadow-lg">
                 <span class="material-symbols-outlined">admin_panel_settings</span>
                 Access Admin Panel
             </button>
@@ -189,17 +215,17 @@
 
     <!-- PASSWORD MODAL (Popup for Login) -->
     <div id="password-modal" class="fixed inset-0 bg-background/90 backdrop-blur-md z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
-        <div class="bg-surface p-8 rounded-2xl shadow-2xl border border-outline-variant max-w-md w-full mx-4 transform scale-95 transition-transform duration-300" id="password-modal-content">
+        <div class="bg-surface p-8 rounded-2xl shadow-2xl border border-outline-variant max-w-sm w-full mx-4 transform scale-95 transition-transform duration-300" id="password-modal-content">
             <div class="flex flex-col items-center text-center">
                 <div class="bg-primary-container text-on-primary-container p-4 rounded-full mb-4">
                     <span class="material-symbols-outlined text-4xl">lock</span>
                 </div>
-                <h3 class="text-2xl font-headline-md font-bold text-on-surface mb-2">Admin Authentication</h3>
-                <p class="text-on-surface-variant mb-6 text-sm">Please enter the master password to access the content management system.</p>
+                <h3 class="text-2xl font-headline-md font-bold text-on-surface mb-2">Admin Security</h3>
+                <p class="text-on-surface-variant mb-6 text-sm">Enter the master password to access settings.</p>
                 
-                <input type="password" id="admin-password-input" class="w-full text-center text-2xl tracking-[0.5em] bg-background border-2 border-outline-variant rounded-lg p-4 text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all mb-4" placeholder="•••••">
+                <input type="password" id="admin-password-input" class="w-full text-center text-3xl tracking-[0.4em] bg-background border-2 border-outline-variant rounded-lg p-4 text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all mb-4" placeholder="•••••">
                 
-                <p id="password-error" class="text-error font-semibold text-sm mb-4 hidden">Incorrect Password! Try again.</p>
+                <p id="password-error" class="text-error font-bold text-sm mb-4 hidden">Incorrect Password! Try again.</p>
                 
                 <div class="flex w-full gap-3">
                     <button id="cancel-login-btn" class="flex-1 py-3 bg-surface-container text-on-surface font-semibold rounded-lg hover:bg-surface-container-high transition-colors">Cancel</button>
@@ -211,7 +237,7 @@
 
     <!-- FIREBASE REALTIME DATABASE & JAVASCRIPT LOGIC -->
     <script type="module">
-        // 1. Firebase SDK Imports for REALTIME DATABASE (No Firestore, No Storage)
+        // 1. Firebase SDK Imports for REALTIME DATABASE
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getDatabase, ref, push, onValue, remove, update, child } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
 
@@ -230,7 +256,7 @@
         // 3. Initialize Firebase App & Realtime Database
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
-        const dbRef = ref(db, 'sky_services_data'); // Main node for our data
+        const dbRef = ref(db, 'sky_services_data');
 
         // 4. DOM Elements
         const openPasswordModalBtn = document.getElementById('open-password-modal-btn');
@@ -249,6 +275,7 @@
         const loadingSpinner = document.getElementById('loading-spinner');
         
         const headingInput = document.getElementById('admin-heading');
+        const headingDatalist = document.getElementById('existing-headings');
         const contentInput = document.getElementById('admin-content');
         const imageInput = document.getElementById('admin-image');
         const imageStatus = document.getElementById('image-status');
@@ -260,13 +287,13 @@
 
         // State Variable to check if Admin is unlocked
         let isAdminUnlocked = false;
+        let currentDataSnapshot = null; 
 
         // ---------------------------------------------------------
         // 5. PASSWORD & MODAL LOGIC
         // ---------------------------------------------------------
         function showModal() {
             passwordModal.classList.remove('hidden');
-            // Slight delay to allow CSS transition to work
             setTimeout(() => {
                 passwordModal.classList.remove('opacity-0');
                 passwordModalContent.classList.remove('scale-95');
@@ -295,11 +322,9 @@
                 isAdminUnlocked = true;
                 hideModal();
                 adminSection.classList.remove('hidden');
-                // Scroll to admin panel smoothly
                 setTimeout(() => {
                     adminSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }, 300);
-                // Re-render data to show Edit/Delete buttons
                 renderDataToDOM(currentDataSnapshot);
             } else {
                 passwordError.classList.remove('hidden');
@@ -310,88 +335,136 @@
         closeAdminBtn.addEventListener('click', () => {
             adminSection.classList.add('hidden');
             isAdminUnlocked = false;
-            // Hide edit/delete buttons from UI
-            renderDataToDOM(currentDataSnapshot);
+            renderDataToDOM(currentDataSnapshot); // Re-render without admin buttons
         });
 
         // ---------------------------------------------------------
-        // 6. REALTIME DATABASE FETCHING & RENDERING (Real-time Sync)
+        // 6. REALTIME DATABASE FETCHING & RENDERING (Grouping & Swipe UI)
         // ---------------------------------------------------------
-        let currentDataSnapshot = null; // Store data locally to re-render when admin logs in/out
-
         onValue(dbRef, (snapshot) => {
             currentDataSnapshot = snapshot;
             renderDataToDOM(snapshot);
         }, (error) => {
             console.error("Firebase Read Error:", error);
-            loadingSpinner.innerHTML = `<p class="text-error font-bold">Failed to load data. Please check Firebase rules. Error: ${error.message}</p>`;
+            loadingSpinner.innerHTML = `<p class="text-error font-bold">Failed to load data. Error: ${error.message}</p>`;
         });
 
         function renderDataToDOM(snapshot) {
             contentContainer.innerHTML = '';
+            headingDatalist.innerHTML = '';
             loadingSpinner.style.display = 'none';
 
             if (!snapshot || !snapshot.exists()) {
                 contentContainer.innerHTML = `
-                    <div class="bg-surface-container-low p-10 rounded-2xl text-center border border-outline-variant">
-                        <span class="material-symbols-outlined text-6xl text-on-surface-variant mb-4">inbox</span>
-                        <h3 class="text-2xl font-bold text-on-surface mb-2">No Content Available</h3>
-                        <p class="text-on-surface-variant">The directory is currently empty. Login to Admin Panel to add new content.</p>
+                    <div class="bg-surface p-10 rounded-2xl text-center border border-outline-variant mr-4 md:mr-margin-desktop">
+                        <span class="material-symbols-outlined text-6xl text-on-surface-variant mb-4">folder_open</span>
+                        <h3 class="text-2xl font-bold text-on-surface mb-2">No Records Found</h3>
+                        <p class="text-on-surface-variant">The directory is empty. Login to Admin Panel to start grouping content.</p>
                     </div>`;
                 return;
             }
 
-            // Loop through all data nodes
+            // Step 1: Extract data and group by heading
+            const groupedData = {};
+            const uniqueHeadings = new Set();
+
             snapshot.forEach((childSnapshot) => {
-                const childKey = childSnapshot.key;
-                const childData = childSnapshot.val();
+                const data = childSnapshot.val();
+                const key = childSnapshot.key;
                 
-                // Construct the HTML for the 1:1 Layout Cards
-                // Using aspect-square to guarantee 1:1 boxes
-                const cardHTML = `
-                    <div class="fade-in relative group flex flex-col md:flex-row bg-surface border border-outline-variant rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-shadow duration-300">
-                        
-                        <!-- Admin Control Buttons (Only injected if Admin is unlocked) -->
-                        ${isAdminUnlocked ? `
-                            <div class="absolute top-4 left-4 z-20 flex gap-2">
-                                <button onclick="editItem('${childKey}')" class="bg-primary-container text-on-primary-container px-4 py-2 rounded-lg shadow-lg hover:bg-inverse-primary font-bold flex items-center gap-1 transition-colors">
-                                    <span class="material-symbols-outlined text-sm">edit</span> Edit
-                                </button>
-                                <button onclick="deleteItem('${childKey}')" class="bg-error text-on-error px-4 py-2 rounded-lg shadow-lg hover:opacity-80 font-bold flex items-center gap-1 transition-colors">
-                                    <span class="material-symbols-outlined text-sm">delete</span> Delete
-                                </button>
-                            </div>
-                        ` : ''}
+                // Ensure backward compatibility if heading is missing
+                const categoryHeading = data.heading ? data.heading.trim() : "Uncategorized";
+                uniqueHeadings.add(categoryHeading);
 
-                        <!-- Left Side: Content Box (Strictly 1:1 Square) -->
-                        <div class="w-full md:w-1/2 aspect-square p-8 md:p-12 flex flex-col bg-surface border-b md:border-b-0 md:border-r border-outline-variant">
-                            <h3 class="text-2xl md:text-3xl font-headline-lg font-bold text-primary mb-6 break-words flex-shrink-0">${childData.heading}</h3>
-                            
-                            <!-- Scrollable Content Area to preserve 1:1 outer bounds -->
-                            <div class="font-body-md text-on-surface-variant text-base md:text-lg leading-relaxed overflow-y-auto custom-scroll pr-4 h-full whitespace-pre-wrap">
-                                ${childData.content}
-                            </div>
-                        </div>
-
-                        <!-- Right Side: Image Box (Strictly 1:1 Square) -->
-                        <div class="w-full md:w-1/2 aspect-square bg-surface-container-high relative">
-                            <img src="${childData.imageUrl}" alt="Content Image" class="absolute inset-0 w-full h-full object-cover" />
-                        </div>
-                    </div>
-                `;
-                // Insert at the beginning so newest items show first
-                contentContainer.insertAdjacentHTML('afterbegin', cardHTML);
+                if (!groupedData[categoryHeading]) {
+                    groupedData[categoryHeading] = [];
+                }
+                
+                // Add id to data object so we can use it later
+                groupedData[categoryHeading].push({ id: key, ...data });
             });
+
+            // Step 2: Populate Datalist in Admin Panel
+            uniqueHeadings.forEach(heading => {
+                const option = document.createElement('option');
+                option.value = heading;
+                headingDatalist.appendChild(option);
+            });
+
+            // Step 3: Generate HTML dynamically per group
+            let finalHTML = '';
+
+            // Iterate over each heading
+            for (const [headingText, itemsArray] of Object.entries(groupedData)) {
+                
+                // Container for this specific heading section
+                finalHTML += `
+                <div class="fade-in mb-14 border-b border-outline-variant pb-8 last:border-0 last:pb-0">
+                    
+                    <!-- Top Main Heading for the section -->
+                    <div class="flex items-center gap-3 mb-6 pr-4 md:pr-margin-desktop">
+                        <span class="material-symbols-outlined text-primary text-3xl">label_important</span>
+                        <h2 class="text-3xl md:text-4xl font-headline-lg font-bold text-on-surface capitalize tracking-tight">${headingText}</h2>
+                    </div>
+                    
+                    <!-- Horizontal Swipe/Scroll Container for Cards -->
+                    <!-- snap-x forces cards to snap into place smoothly -->
+                    <div class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-6 pt-2 custom-scroll-x pr-4 md:pr-margin-desktop">
+                `;
+
+                // Render 9:16 Cards inside this horizontal container
+                itemsArray.forEach(item => {
+                    finalHTML += `
+                        <!-- Single 9:16 Card Structure -->
+                        <div class="relative flex-shrink-0 w-[280px] sm:w-[320px] aspect-[9/16] bg-surface rounded-2xl border border-outline-variant overflow-hidden snap-start group shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col">
+                            
+                            <!-- Admin Control Buttons (Floating on top of card) -->
+                            ${isAdminUnlocked ? `
+                                <div class="absolute top-3 left-3 z-20 flex gap-2">
+                                    <button onclick="editItem('${item.id}')" class="bg-primary text-on-primary p-2 rounded-lg shadow-lg hover:bg-surface-tint font-bold transition-transform hover:scale-105" title="Edit">
+                                        <span class="material-symbols-outlined text-lg">edit</span>
+                                    </button>
+                                    <button onclick="deleteItem('${item.id}')" class="bg-error text-on-error p-2 rounded-lg shadow-lg hover:opacity-80 font-bold transition-transform hover:scale-105" title="Delete">
+                                        <span class="material-symbols-outlined text-lg">delete</span>
+                                    </button>
+                                </div>
+                            ` : ''}
+
+                            <!-- Top Half: Image Section (50% Height) -->
+                            <div class="h-1/2 w-full relative bg-surface-container-high overflow-hidden">
+                                <img src="${item.imageUrl}" alt="Content Image" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                                <!-- Gradient overlay to make it look premium -->
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                            </div>
+
+                            <!-- Bottom Half: Content Section (50% Height with Custom Scroll) -->
+                            <div class="h-1/2 w-full bg-surface p-6 flex flex-col">
+                                <div class="font-body-md text-on-surface-variant text-[15px] sm:text-base leading-relaxed overflow-y-auto custom-scroll pr-2 h-full whitespace-pre-wrap break-words">
+                                    ${item.content}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                // Close Horizontal Container and Section Div
+                finalHTML += `
+                    </div>
+                </div>
+                `;
+            }
+
+            contentContainer.innerHTML = finalHTML;
         }
 
         // ---------------------------------------------------------
-        // 7. FILE TO BASE64 CONVERTER (No Firebase Storage Needed)
+        // 7. FILE TO BASE64 CONVERTER
         // ---------------------------------------------------------
         function convertFileToBase64(file) {
             return new Promise((resolve, reject) => {
                 const reader = new FileReader();
                 reader.readAsDataURL(file);
-                reader.onload = () => resolve(reader.result); // Returns Base64 String
+                reader.onload = () => resolve(reader.result); 
                 reader.onerror = error => reject(error);
             });
         }
@@ -409,50 +482,44 @@
             
             let finalImageString = existingImageBase64Input.value;
 
-            // Change button state
-            submitBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">autorenew</span> Saving...';
+            submitBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">autorenew</span> Processing...';
             submitBtn.disabled = true;
 
             try {
-                // If a new image is selected, convert it to Base64 Text
                 if (file) {
-                    imageStatus.innerText = "Processing Image format...";
+                    imageStatus.innerText = "Converting Image format securely...";
                     finalImageString = await convertFileToBase64(file);
                 }
 
-                // Validation
                 if (!finalImageString) {
-                    alert("Please upload an image to continue!");
+                    alert("Image is strictly required for the 9:16 card format!");
                     resetFormState();
                     return;
                 }
 
                 if (editId) {
-                    // Update existing node in Realtime DB
                     await update(child(dbRef, editId), {
                         heading: heading,
                         content: content,
-                        imageUrl: finalImageString, // Save base64 string
+                        imageUrl: finalImageString,
                         updatedAt: new Date().toISOString()
                     });
-                    alert("Content successfully updated!");
+                    alert(`Card successfully updated under heading: ${heading}`);
                 } else {
-                    // Push new node to Realtime DB
                     await push(dbRef, {
                         heading: heading,
                         content: content,
-                        imageUrl: finalImageString, // Save base64 string
+                        imageUrl: finalImageString,
                         createdAt: new Date().toISOString()
                     });
-                    alert("New content successfully added!");
+                    alert(`New card successfully added under heading: ${heading}`);
                 }
 
-                // Clear form
                 resetFormState();
 
             } catch (error) {
                 console.error("Database Write Error:", error);
-                alert("An error occurred while saving. Please check rules in Firebase Realtime DB.");
+                alert("An error occurred while saving. Please ensure Firebase database rules are set to true.");
                 resetFormState();
             }
         });
@@ -460,39 +527,31 @@
         // ---------------------------------------------------------
         // 9. GLOBAL EDIT & DELETE FUNCTIONS
         // ---------------------------------------------------------
-        
-        // Expose Edit Function to Window so onclick in HTML can read it
         window.editItem = function(id) {
-            // Find data locally from our snapshot
             const dataNode = currentDataSnapshot.child(id).val();
             if(!dataNode) return;
 
-            // Scroll to form
             adminSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
             
-            // Populate form
             editIdInput.value = id;
-            headingInput.value = dataNode.heading;
+            headingInput.value = dataNode.heading || "";
             contentInput.value = dataNode.content;
             existingImageBase64Input.value = dataNode.imageUrl;
             
-            // UI adjustments
-            imageStatus.innerText = "Previous image is saved. Upload a new file only if you want to replace it.";
-            imageInput.removeAttribute("required"); // Not required during edit
+            imageStatus.innerText = "Existing image detected. Upload a new one only if you want to replace it.";
+            imageInput.removeAttribute("required"); 
             
-            submitBtn.innerHTML = '<span class="material-symbols-outlined">update</span> Update Content';
+            submitBtn.innerHTML = '<span class="material-symbols-outlined">update</span> Update Card';
             cancelEditBtn.classList.remove('hidden');
         };
 
-        // Expose Delete Function to Window
         window.deleteItem = async function(id) {
-            if(confirm("Warning: Are you sure you want to permanently delete this content?")) {
+            if(confirm("Are you absolutely sure you want to permanently delete this specific card?")) {
                 try {
                     await remove(child(dbRef, id));
-                    // No need to alert, UI will auto-update because of onValue()
                 } catch (error) {
                     console.error("Delete Error:", error);
-                    alert("Failed to delete content.");
+                    alert("Failed to delete the card.");
                 }
             }
         };
@@ -505,7 +564,7 @@
             editIdInput.value = '';
             existingImageBase64Input.value = '';
             imageStatus.innerText = '';
-            imageInput.setAttribute("required", "true"); // Image strictly required for new post
+            imageInput.setAttribute("required", "true"); 
             
             submitBtn.innerHTML = '<span class="material-symbols-outlined">save</span> Save to Database';
             submitBtn.disabled = false;
