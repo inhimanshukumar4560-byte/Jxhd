@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>SKY WORLDWIDE - Global Services</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <!-- Google Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet"/>
+    
+    <!-- Tailwind Configuration -->
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+                "tertiary-fixed-dim": "#c6c6c7",
+                "surface-container-lowest": "#ffffff",
+                "primary-fixed": "#ffe16d",
+                "on-background": "#1a1c1c",
+                "surface-tint": "#705d00",
+                "inverse-primary": "#e9c400",
+                "surface-bright": "#f9f9f9",
+                "on-surface-variant": "#4d4732",
+                "error": "#ba1a1a",
+                "on-error": "#ffffff",
+                "background": "#f9f9f9",
+                "on-surface": "#1a1c1c",
+                "outline-variant": "#d0c6ab",
+                "surface-container-high": "#e8e8e8",
+                "surface": "#f9f9f9",
+                "primary": "#705d00",
+                "surface-container": "#eeeeee",
+                "primary-container": "#ffd700",
+                "on-primary-container": "#705e00",
+                "on-primary": "#ffffff",
+            },
+            spacing: {
+                "section-gap": "80px",
+                "margin-desktop": "64px",
+                "container-max": "1280px",
+            },
+            fontFamily: {
+                "body-md": ["Inter"],
+                "headline-md": ["Montserrat"],
+                "headline-lg": ["Montserrat"],
+                "display-lg": ["Montserrat"],
+            }
+          }
+        }
+      }
+    </script>
+    
+    <!-- Custom CSS for Scrollbars and Animations -->
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Custom scrollbar for 1:1 box text area */
+        .custom-scroll::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+            border-radius: 8px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #d0c6ab; 
+            border-radius: 8px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb:hover {
+            background: #7e775f; 
+        }
+
+        /* Smooth fade-in animation */
+        .fade-in {
+            animation: fadeIn 0.4s ease-in-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-primary-container selection:text-on-primary-container flex flex-col min-h-screen">
+
+    <!-- Top Navigation Header -->
+    <header class="bg-surface border-b border-outline-variant sticky top-0 z-40 shadow-sm">
+        <div class="flex justify-between items-center w-full px-margin-desktop max-w-container-max mx-auto h-20">
+            <div class="flex items-center gap-4">
+                <a class="font-headline-md text-2xl font-bold tracking-tight text-primary uppercase" href="#">SKY WORLDWIDE</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative h-[350px] flex items-center justify-center overflow-hidden shrink-0">
+        <img alt="Hero Background" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADXRgn4R0Ruh-HG0E3LwOToY3lIvpa5cmcCFJKrtLdBej2DPqOCszjkKVr0MBE4qoGXwpYJu9BEW78CytbJd5cElMhjP3TNNkBhVE_7p0aBmnVjGGUm-p66OUfNlinvB9DUtMWVqOvaaTVFclF_NlRan4RMwEqtTxj3LuJu_xpiiKwEBT4pvos5TARkDrIylTb7ltC3KAQF9cRyTveJxNAaVSlsoaxNdva8cqX8-iQvDm8R6dGSCyFuBwB8Yo1VE8C4Xu2_mw1S-U"/>
+        <div class="absolute inset-0 bg-background/85 backdrop-blur-sm"></div>
+        <div class="relative z-10 w-full max-w-container-max px-margin-desktop text-center">
+            <span class="inline-block px-4 py-1 mb-4 border border-outline-variant rounded-full text-sm font-semibold tracking-widest uppercase text-primary bg-surface/50">Global Premium Services</span>
+            <h1 class="text-4xl md:text-5xl lg:text-display-lg font-bold text-on-background">Explore Our Exclusives</h1>
+        </div>
+    </section>
+
+    <!-- MAIN DYNAMIC CONTENT AREA -->
+    <main class="flex-grow w-full max-w-container-max mx-auto px-margin-desktop py-16">
+        
+        <!-- Loading Spinner -->
+        <div id="loading-spinner" class="text-center py-20 text-primary">
+            <span class="material-symbols-outlined animate-spin text-5xl">autorenew</span>
+            <p class="mt-4 font-semibold text-lg text-on-surface-variant">Fetching Latest Data...</p>
+        </div>
+
+        <!-- Dynamic Content will be injected inside this Grid -->
+        <div id="dynamic-content-container" class="space-y-16">
+            <!-- JavaScript will load 1:1 cards here -->
+        </div>
+
+    </main>
+
+    <!-- ADMIN PANEL SECTION (Hidden by Default) -->
+    <section id="admin-section" class="max-w-container-max mx-auto px-margin-desktop py-10 hidden bg-surface-container-high border-t border-outline-variant w-full shrink-0">
+        <div class="bg-surface p-8 md:p-10 rounded-2xl shadow-xl border border-outline-variant">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-3xl font-headline-lg text-primary flex items-center gap-3">
+                    <span class="material-symbols-outlined text-4xl">dashboard_customize</span>
+                    Admin Dashboard
+                </h2>
+                <button id="close-admin-btn" class="text-on-surface-variant hover:text-error transition-colors">
+                    <span class="material-symbols-outlined text-3xl">close</span>
+                </button>
+            </div>
+            
+            <form id="admin-form" class="space-y-6">
+                <!-- Hidden inputs for Edit Mode -->
+                <input type="hidden" id="edit-id" value="">
+                <input type="hidden" id="existing-image-base64" value="">
+
+                <div>
+                    <label class="block text-base font-bold text-on-surface mb-2">Heading Title</label>
+                    <input type="text" id="admin-heading" required class="w-full bg-background border-2 border-outline-variant rounded-lg p-4 text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Enter the main heading...">
+                </div>
+
+                <div>
+                    <label class="block text-base font-bold text-on-surface mb-2">Detailed Content</label>
+                    <textarea id="admin-content" required rows="6" class="w-full bg-background border-2 border-outline-variant rounded-lg p-4 text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Enter the content description..."></textarea>
+                </div>
+
+                <div class="bg-surface-container p-6 rounded-lg border border-outline-variant border-dashed">
+                    <label class="block text-base font-bold text-on-surface mb-2">Upload Image (Will fit in 1:1 Square)</label>
+                    <input type="file" id="admin-image" accept="image/*" class="w-full text-on-surface-variant file:mr-4 file:py-3 file:px-6 file:rounded-lg file:border-0 file:text-sm file:font-bold file:bg-primary file:text-on-primary hover:file:bg-surface-tint cursor-pointer transition-colors">
+                    <p id="image-status" class="text-sm font-semibold text-primary mt-3"></p>
+                </div>
+
+                <div class="flex gap-4 pt-4 border-t border-outline-variant">
+                    <button type="submit" id="submit-btn" class="px-8 py-4 bg-primary text-on-primary rounded-lg font-bold text-lg hover:bg-surface-tint transition-all shadow-md flex items-center gap-2">
+                        <span class="material-symbols-outlined">save</span> Save to Database
+                    </button>
+                    <button type="button" id="cancel-edit-btn" class="hidden px-8 py-4 bg-error text-on-error rounded-lg font-bold text-lg hover:opacity-90 transition-all shadow-md">
+                        Cancel Edit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer Area (Admin Button is Here at the Bottom) -->
+    <footer class="bg-surface border-t border-outline-variant mt-auto shrink-0">
+        <div class="flex flex-col md:flex-row justify-between items-center py-8 px-margin-desktop max-w-container-max mx-auto gap-6">
+            <div class="text-center md:text-left">
+                <span class="block text-xl font-bold text-primary mb-1">SKY WORLDWIDE</span>
+                <p class="text-sm font-medium text-on-surface-variant">© 2024 Sky Hotel Management. All rights reserved.</p>
+            </div>
+            
+            <!-- ADMIN LOGIN BUTTON (AT BOTTOM) -->
+            <button id="open-password-modal-btn" class="px-6 py-3 bg-surface-container-high text-on-surface font-semibold rounded-lg hover:bg-primary hover:text-on-primary transition-all flex items-center gap-2 border border-outline-variant">
+                <span class="material-symbols-outlined">admin_panel_settings</span>
+                Access Admin Panel
+            </button>
+        </div>
+    </footer>
+
+    <!-- PASSWORD MODAL (Popup for Login) -->
+    <div id="password-modal" class="fixed inset-0 bg-background/90 backdrop-blur-md z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-surface p-8 rounded-2xl shadow-2xl border border-outline-variant max-w-md w-full mx-4 transform scale-95 transition-transform duration-300" id="password-modal-content">
+            <div class="flex flex-col items-center text-center">
+                <div class="bg-primary-container text-on-primary-container p-4 rounded-full mb-4">
+                    <span class="material-symbols-outlined text-4xl">lock</span>
+                </div>
+                <h3 class="text-2xl font-headline-md font-bold text-on-surface mb-2">Admin Authentication</h3>
+                <p class="text-on-surface-variant mb-6 text-sm">Please enter the master password to access the content management system.</p>
+                
+                <input type="password" id="admin-password-input" class="w-full text-center text-2xl tracking-[0.5em] bg-background border-2 border-outline-variant rounded-lg p-4 text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all mb-4" placeholder="•••••">
+                
+                <p id="password-error" class="text-error font-semibold text-sm mb-4 hidden">Incorrect Password! Try again.</p>
+                
+                <div class="flex w-full gap-3">
+                    <button id="cancel-login-btn" class="flex-1 py-3 bg-surface-container text-on-surface font-semibold rounded-lg hover:bg-surface-container-high transition-colors">Cancel</button>
+                    <button id="submit-login-btn" class="flex-1 py-3 bg-primary text-on-primary font-bold rounded-lg hover:bg-surface-tint transition-colors">Unlock</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FIREBASE REALTIME DATABASE & JAVASCRIPT LOGIC -->
+    <script type="module">
+        // 1. Firebase SDK Imports for REALTIME DATABASE (No Firestore, No Storage)
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getDatabase, ref, push, onValue, remove, update, child } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+
+        // 2. Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCdmhV-yqGP2STUtDy7NgJscbf-0Jl_-dw",
+            authDomain: "skyhitel.firebaseapp.com",
+            databaseURL: "https://skyhitel-default-rtdb.firebaseio.com",
+            projectId: "skyhitel",
+            storageBucket: "skyhitel.firebasestorage.app",
+            messagingSenderId: "1090604356137",
+            appId: "1:1090604356137:web:d269a6bb19a83fbcc54238",
+            measurementId: "G-MFLEDK51PN"
+        };
+
+        // 3. Initialize Firebase App & Realtime Database
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        const dbRef = ref(db, 'sky_services_data'); // Main node for our data
+
+        // 4. DOM Elements
+        const openPasswordModalBtn = document.getElementById('open-password-modal-btn');
+        const passwordModal = document.getElementById('password-modal');
+        const passwordModalContent = document.getElementById('password-modal-content');
+        const adminPasswordInput = document.getElementById('admin-password-input');
+        const submitLoginBtn = document.getElementById('submit-login-btn');
+        const cancelLoginBtn = document.getElementById('cancel-login-btn');
+        const passwordError = document.getElementById('password-error');
+        
+        const adminSection = document.getElementById('admin-section');
+        const closeAdminBtn = document.getElementById('close-admin-btn');
+        const adminForm = document.getElementById('admin-form');
+        
+        const contentContainer = document.getElementById('dynamic-content-container');
+        const loadingSpinner = document.getElementById('loading-spinner');
+        
+        const headingInput = document.getElementById('admin-heading');
+        const contentInput = document.getElementById('admin-content');
+        const imageInput = document.getElementById('admin-image');
+        const imageStatus = document.getElementById('image-status');
+        const editIdInput = document.getElementById('edit-id');
+        const existingImageBase64Input = document.getElementById('existing-image-base64');
+        
+        const submitBtn = document.getElementById('submit-btn');
+        const cancelEditBtn = document.getElementById('cancel-edit-btn');
+
+        // State Variable to check if Admin is unlocked
+        let isAdminUnlocked = false;
+
+        // ---------------------------------------------------------
+        // 5. PASSWORD & MODAL LOGIC
+        // ---------------------------------------------------------
+        function showModal() {
+            passwordModal.classList.remove('hidden');
+            // Slight delay to allow CSS transition to work
+            setTimeout(() => {
+                passwordModal.classList.remove('opacity-0');
+                passwordModalContent.classList.remove('scale-95');
+                passwordModalContent.classList.add('scale-100');
+                adminPasswordInput.focus();
+            }, 10);
+        }
+
+        function hideModal() {
+            passwordModal.classList.add('opacity-0');
+            passwordModalContent.classList.remove('scale-100');
+            passwordModalContent.classList.add('scale-95');
+            setTimeout(() => {
+                passwordModal.classList.add('hidden');
+                adminPasswordInput.value = '';
+                passwordError.classList.add('hidden');
+            }, 300);
+        }
+
+        openPasswordModalBtn.addEventListener('click', showModal);
+        cancelLoginBtn.addEventListener('click', hideModal);
+
+        submitLoginBtn.addEventListener('click', () => {
+            const pwd = adminPasswordInput.value;
+            if(pwd === "67890") {
+                isAdminUnlocked = true;
+                hideModal();
+                adminSection.classList.remove('hidden');
+                // Scroll to admin panel smoothly
+                setTimeout(() => {
+                    adminSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 300);
+                // Re-render data to show Edit/Delete buttons
+                renderDataToDOM(currentDataSnapshot);
+            } else {
+                passwordError.classList.remove('hidden');
+                adminPasswordInput.value = '';
+            }
+        });
+
+        closeAdminBtn.addEventListener('click', () => {
+            adminSection.classList.add('hidden');
+            isAdminUnlocked = false;
+            // Hide edit/delete buttons from UI
+            renderDataToDOM(currentDataSnapshot);
+        });
+
+        // ---------------------------------------------------------
+        // 6. REALTIME DATABASE FETCHING & RENDERING (Real-time Sync)
+        // ---------------------------------------------------------
+        let currentDataSnapshot = null; // Store data locally to re-render when admin logs in/out
+
+        onValue(dbRef, (snapshot) => {
+            currentDataSnapshot = snapshot;
+            renderDataToDOM(snapshot);
+        }, (error) => {
+            console.error("Firebase Read Error:", error);
+            loadingSpinner.innerHTML = `<p class="text-error font-bold">Failed to load data. Please check Firebase rules. Error: ${error.message}</p>`;
+        });
+
+        function renderDataToDOM(snapshot) {
+            contentContainer.innerHTML = '';
+            loadingSpinner.style.display = 'none';
+
+            if (!snapshot || !snapshot.exists()) {
+                contentContainer.innerHTML = `
+                    <div class="bg-surface-container-low p-10 rounded-2xl text-center border border-outline-variant">
+                        <span class="material-symbols-outlined text-6xl text-on-surface-variant mb-4">inbox</span>
+                        <h3 class="text-2xl font-bold text-on-surface mb-2">No Content Available</h3>
+                        <p class="text-on-surface-variant">The directory is currently empty. Login to Admin Panel to add new content.</p>
+                    </div>`;
+                return;
+            }
+
+            // Loop through all data nodes
+            snapshot.forEach((childSnapshot) => {
+                const childKey = childSnapshot.key;
+                const childData = childSnapshot.val();
+                
+                // Construct the HTML for the 1:1 Layout Cards
+                // Using aspect-square to guarantee 1:1 boxes
+                const cardHTML = `
+                    <div class="fade-in relative group flex flex-col md:flex-row bg-surface border border-outline-variant rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-shadow duration-300">
+                        
+                        <!-- Admin Control Buttons (Only injected if Admin is unlocked) -->
+                        ${isAdminUnlocked ? `
+                            <div class="absolute top-4 left-4 z-20 flex gap-2">
+                                <button onclick="editItem('${childKey}')" class="bg-primary-container text-on-primary-container px-4 py-2 rounded-lg shadow-lg hover:bg-inverse-primary font-bold flex items-center gap-1 transition-colors">
+                                    <span class="material-symbols-outlined text-sm">edit</span> Edit
+                                </button>
+                                <button onclick="deleteItem('${childKey}')" class="bg-error text-on-error px-4 py-2 rounded-lg shadow-lg hover:opacity-80 font-bold flex items-center gap-1 transition-colors">
+                                    <span class="material-symbols-outlined text-sm">delete</span> Delete
+                                </button>
+                            </div>
+                        ` : ''}
+
+                        <!-- Left Side: Content Box (Strictly 1:1 Square) -->
+                        <div class="w-full md:w-1/2 aspect-square p-8 md:p-12 flex flex-col bg-surface border-b md:border-b-0 md:border-r border-outline-variant">
+                            <h3 class="text-2xl md:text-3xl font-headline-lg font-bold text-primary mb-6 break-words flex-shrink-0">${childData.heading}</h3>
+                            
+                            <!-- Scrollable Content Area to preserve 1:1 outer bounds -->
+                            <div class="font-body-md text-on-surface-variant text-base md:text-lg leading-relaxed overflow-y-auto custom-scroll pr-4 h-full whitespace-pre-wrap">
+                                ${childData.content}
+                            </div>
+                        </div>
+
+                        <!-- Right Side: Image Box (Strictly 1:1 Square) -->
+                        <div class="w-full md:w-1/2 aspect-square bg-surface-container-high relative">
+                            <img src="${childData.imageUrl}" alt="Content Image" class="absolute inset-0 w-full h-full object-cover" />
+                        </div>
+                    </div>
+                `;
+                // Insert at the beginning so newest items show first
+                contentContainer.insertAdjacentHTML('afterbegin', cardHTML);
+            });
+        }
+
+        // ---------------------------------------------------------
+        // 7. FILE TO BASE64 CONVERTER (No Firebase Storage Needed)
+        // ---------------------------------------------------------
+        function convertFileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result); // Returns Base64 String
+                reader.onerror = error => reject(error);
+            });
+        }
+
+        // ---------------------------------------------------------
+        // 8. ADD / EDIT DATA LOGIC (Form Submit)
+        // ---------------------------------------------------------
+        adminForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const heading = headingInput.value.trim();
+            const content = contentInput.value.trim();
+            const file = imageInput.files[0];
+            const editId = editIdInput.value;
+            
+            let finalImageString = existingImageBase64Input.value;
+
+            // Change button state
+            submitBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">autorenew</span> Saving...';
+            submitBtn.disabled = true;
+
+            try {
+                // If a new image is selected, convert it to Base64 Text
+                if (file) {
+                    imageStatus.innerText = "Processing Image format...";
+                    finalImageString = await convertFileToBase64(file);
+                }
+
+                // Validation
+                if (!finalImageString) {
+                    alert("Please upload an image to continue!");
+                    resetFormState();
+                    return;
+                }
+
+                if (editId) {
+                    // Update existing node in Realtime DB
+                    await update(child(dbRef, editId), {
+                        heading: heading,
+                        content: content,
+                        imageUrl: finalImageString, // Save base64 string
+                        updatedAt: new Date().toISOString()
+                    });
+                    alert("Content successfully updated!");
+                } else {
+                    // Push new node to Realtime DB
+                    await push(dbRef, {
+                        heading: heading,
+                        content: content,
+                        imageUrl: finalImageString, // Save base64 string
+                        createdAt: new Date().toISOString()
+                    });
+                    alert("New content successfully added!");
+                }
+
+                // Clear form
+                resetFormState();
+
+            } catch (error) {
+                console.error("Database Write Error:", error);
+                alert("An error occurred while saving. Please check rules in Firebase Realtime DB.");
+                resetFormState();
+            }
+        });
+
+        // ---------------------------------------------------------
+        // 9. GLOBAL EDIT & DELETE FUNCTIONS
+        // ---------------------------------------------------------
+        
+        // Expose Edit Function to Window so onclick in HTML can read it
+        window.editItem = function(id) {
+            // Find data locally from our snapshot
+            const dataNode = currentDataSnapshot.child(id).val();
+            if(!dataNode) return;
+
+            // Scroll to form
+            adminSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            
+            // Populate form
+            editIdInput.value = id;
+            headingInput.value = dataNode.heading;
+            contentInput.value = dataNode.content;
+            existingImageBase64Input.value = dataNode.imageUrl;
+            
+            // UI adjustments
+            imageStatus.innerText = "Previous image is saved. Upload a new file only if you want to replace it.";
+            imageInput.removeAttribute("required"); // Not required during edit
+            
+            submitBtn.innerHTML = '<span class="material-symbols-outlined">update</span> Update Content';
+            cancelEditBtn.classList.remove('hidden');
+        };
+
+        // Expose Delete Function to Window
+        window.deleteItem = async function(id) {
+            if(confirm("Warning: Are you sure you want to permanently delete this content?")) {
+                try {
+                    await remove(child(dbRef, id));
+                    // No need to alert, UI will auto-update because of onValue()
+                } catch (error) {
+                    console.error("Delete Error:", error);
+                    alert("Failed to delete content.");
+                }
+            }
+        };
+
+        // ---------------------------------------------------------
+        // 10. HELPER FUNCTIONS
+        // ---------------------------------------------------------
+        function resetFormState() {
+            adminForm.reset();
+            editIdInput.value = '';
+            existingImageBase64Input.value = '';
+            imageStatus.innerText = '';
+            imageInput.setAttribute("required", "true"); // Image strictly required for new post
+            
+            submitBtn.innerHTML = '<span class="material-symbols-outlined">save</span> Save to Database';
+            submitBtn.disabled = false;
+            cancelEditBtn.classList.add('hidden');
+        }
+
+        cancelEditBtn.addEventListener('click', resetFormState);
+
+    </script>
+</body>
+</html>
